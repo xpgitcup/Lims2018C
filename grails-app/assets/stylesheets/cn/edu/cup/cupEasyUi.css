@@ -1,0 +1,51 @@
+/*这是最左上角的图标LOG*/
+.header-EasyUI {
+    background: transparent;
+    float: left;
+}
+
+/*这是程序的标题*/
+.applicationTitle {
+    float: left;
+    font-family: "微软雅黑 Light";
+    color: black;
+    font-size: 3em;
+    position: relative;
+    top: 25%;
+}
+
+/*这是页眉，右侧，状态栏*/
+.applicationHeaderStatus {
+    float: right;
+    padding-right: 10px;
+}
+
+/*这是程序的页脚*/
+.applicationFooterLeft {
+    zoom: 1;
+    float: left;
+}
+
+.applicationFooter {
+    zoom: 1;
+}
+
+.applicationFooter ul {
+    overflow: hidden;
+    padding-left: 0;
+    zoom: 1;
+}
+
+.applicationFooter li {
+    display: block;
+    float: right;
+    list-style-type: none;
+    margin-right: 0.5em;
+    padding: 0;
+}
+
+
+/*这是主题显示区域*/
+.mainContent {
+    background: transparent;
+}

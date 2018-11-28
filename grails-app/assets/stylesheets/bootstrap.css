@@ -4717,17 +4717,17 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > .active {
   color: #777;
 }
-.pagination {
+.paginationGrails {
   display: inline-block;
   padding-left: 0;
   margin: 20px 0;
   border-radius: 4px;
 }
-.pagination > li {
+.paginationGrails > li {
   display: inline;
 }
-.pagination > li > a,
-.pagination > li > span {
+.paginationGrails > li > a,
+.paginationGrails > li > span {
   position: relative;
   float: left;
   padding: 6px 12px;
@@ -4738,44 +4738,44 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   background-color: #fff;
   border: 1px solid #ddd;
 }
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
+.paginationGrails > li:first-child > a,
+.paginationGrails > li:first-child > span {
   margin-left: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
+.paginationGrails > li:last-child > a,
+.paginationGrails > li:last-child > span {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-.pagination > li > a:hover,
-.pagination > li > span:hover,
-.pagination > li > a:focus,
-.pagination > li > span:focus {
+.paginationGrails > li > a:hover,
+.paginationGrails > li > span:hover,
+.paginationGrails > li > a:focus,
+.paginationGrails > li > span:focus {
   z-index: 2;
   color: #23527c;
   background-color: #eee;
   border-color: #ddd;
 }
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
+.paginationGrails > .active > a,
+.paginationGrails > .active > span,
+.paginationGrails > .active > a:hover,
+.paginationGrails > .active > span:hover,
+.paginationGrails > .active > a:focus,
+.paginationGrails > .active > span:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
   background-color: #337ab7;
   border-color: #337ab7;
 }
-.pagination > .disabled > span,
-.pagination > .disabled > span:hover,
-.pagination > .disabled > span:focus,
-.pagination > .disabled > a,
-.pagination > .disabled > a:hover,
-.pagination > .disabled > a:focus {
+.paginationGrails > .disabled > span,
+.paginationGrails > .disabled > span:hover,
+.paginationGrails > .disabled > span:focus,
+.paginationGrails > .disabled > a,
+.paginationGrails > .disabled > a:hover,
+.paginationGrails > .disabled > a:focus {
   color: #777;
   cursor: not-allowed;
   background-color: #fff;

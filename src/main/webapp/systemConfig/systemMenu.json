@@ -1,0 +1,85 @@
+[
+  {
+    "menuContext": "系统维护",
+    "menuAction": "#",
+    "menuDescription": "对系统的菜单结构进行用户友好的维护",
+    "roleAttribute": "系统维护",
+    "menuOrder": 0,
+    "menuItems": [
+      {
+        "menuContext": "属性维护",
+        "menuAction": "Operation4SystemAttribute/index",
+        "menuDescription": "对系统的用户属性进行用户友好的维护",
+        "upMenuItem": "系统维护",
+        "menuOrder": 0
+      },
+      {
+        "menuContext": "用户维护",
+        "menuAction": "Operation4SystemUser/index",
+        "menuDescription": "对系统的用户进行用户友好的维护",
+        "upMenuItem": "系统维护",
+        "menuOrder": 0
+      },
+      {
+        "menuContext": "菜单维护",
+        "menuAction": "Operation4SystemMenu/index",
+        "menuDescription": "对系统的菜单用户进行用户友好的维护",
+        "upMenuItem": "系统维护",
+        "menuOrder": 0
+      },
+      {
+        "menuContext": "日志维护",
+        "menuAction": "Operation4SystemLog/index",
+        "menuDescription": "对系统的日志进行用户友好的维护",
+        "upMenuItem": "系统维护",
+        "menuOrder": 0
+      }
+    ]
+  },
+  {
+    "menuContext": "公共服务",
+    "menuAction": "#",
+    "menuDescription": "对所有用户开放的功能",
+    "roleAttribute": "公共服务",
+    "menuOrder": 0,
+    "menuItems": [
+      {
+        "menuContext": "社区沟通",
+        "menuAction": "Operation4SystemChat/index",
+        "menuDescription": "与系统中的用户对话",
+        "upMenuItem": "公共服务",
+        "menuOrder": 0
+      }
+    ]
+  },
+  {
+    "menuContext": "基础数据",
+    "menuAction": "#",
+    "menuDescription": "维护数据字典+物理单位",
+    "roleAttribute": "系统维护",
+    "menuOrder": 0,
+    "menuItems": [
+      {
+        "menuContext": "单位维护",
+        "menuAction": "Operation4Physical/index",
+        "menuDescription": "物理单位维护",
+        "upMenuItem": "基础数据",
+        "menuOrder": 0
+      },
+      {
+        "menuContext": "数据字典A维护",
+        "menuAction": "operation4Data/index",
+        "menuDescription": "维护数据字典（新）",
+        "upMenuItem": "基础数据",
+        "menuOrder": 0
+      },
+      {
+        "menuContext": "用户类库维护",
+        "menuAction": "operation4UserDefinedFunction/index",
+        "menuDescription": "维护用户自定义功能",
+        "upMenuItem": "基础数据",
+        "menuOrder": 0
+      }
+    ]
+  }
+]

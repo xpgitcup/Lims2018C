@@ -11,20 +11,20 @@
     }
 
     /* Hide individual steps in pagination, just have next & previous */
-    .pagination .step, .pagination .currentStep {
+    .paginationGrails .step, .paginationGrails .currentStep {
         display: none;
     }
 
-    .pagination .prevLink {
+    .paginationGrails .prevLink {
         float: left;
     }
 
-    .pagination .nextLink {
+    .paginationGrails .nextLink {
         float: right;
     }
 
     /* pagination needs to wrap around floated buttons */
-    .pagination {
+    .paginationGrails {
         overflow: hidden;
     }
 

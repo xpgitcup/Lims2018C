@@ -1,0 +1,76 @@
+body {
+  background: url("../../../cn/edu/cup/img_bg_haven.jpg");
+  background-position: center;
+  background-size: cover;
+  /*这个是正确的*/
+  /*登录界面的设置*/
+}
+body .carousel-inner .item img {
+  display: block;
+  line-height: 1;
+  background: yellow;
+  /*width: 100%;  /* 20170523 李晓平增加*/
+  margin: auto;
+}
+body .topoCanvas {
+  background-color: #0000FF;
+}
+body .applicationTitle {
+  display: inline-block;
+  vertical-align: text-top;
+  padding-top: 20px;
+}
+body .applicationTitle a {
+  font-size: 2.1em;
+  color: white;
+}
+body .home-message {
+  color: red;
+}
+body .home-chat {
+  color: white;
+}
+body .home-chat td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+body .home-title {
+  color: white;
+  font-size: 1.2em;
+}
+body .home-message {
+  color: white;
+}
+body .welcomePanel {
+  margin: auto;
+  margin-top: 5%;
+  width: 521px;
+  height: 375px;
+  background: url("../../../cn/edu/cup/login_bg_a.png") repeat-x;
+  padding-top: 10px;
+  border-radius: 6px;
+  border: 1px;
+}
+body .welcomePanel .applicationTitle {
+  margin-top: auto;
+}
+body .welcomePanel .title {
+  position: relative;
+  font-family: "微软雅黑";
+  font-size: 1.4em;
+  padding-top: 65px;
+  text-align: center;
+}
+body .welcomePanel .welcomeForm {
+  font-family: "微软雅黑";
+  font-size: 1.0em;
+  margin-left: 140px;
+  margin-top: 35px;
+}
+body .welcomePanel .welcomeForm ul li {
+  padding: 10px;
+  list-style: none;
+}
+body .welcomePanel .welcomeForm ul li a {
+  color: white;
+}
