@@ -1,5 +1,6 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.system.JsFrame
 import cn.edu.cup.system.SystemChat
 import cn.edu.cup.system.SystemLog
 import cn.edu.cup.system.SystemMenu
@@ -155,6 +156,7 @@ class HomeController {
             redirect(uri: "/home")
         } else {
             flash.message = "用户名或密码错误！"
+            println("用户名或密码错误！")
             redirect(uri: "${createLink(uri: '/')}")
         }
     }

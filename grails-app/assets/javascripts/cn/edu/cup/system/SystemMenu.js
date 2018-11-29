@@ -34,9 +34,11 @@ $(function(){
             displayTreeSystemMenuDiv.tree("collapseAll");
             var nodeid = $.cookie("currentSystemMenu");
             console.info("当初扩展到" + nodeid);
-            var cNode = $("#" + nodeid);
-            displayTreeSystemMenuDiv.tree("expandTo", cNode);
-            displayTreeSystemMenuDiv.tree("select", cNode);
+            if (nodeid) {
+                var cNode = $("#" + nodeid);
+                displayTreeSystemMenuDiv.tree("expandTo", cNode);
+                displayTreeSystemMenuDiv.tree("select", cNode);
+            }
         }
     });
     //分页

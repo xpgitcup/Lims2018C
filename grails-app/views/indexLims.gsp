@@ -87,14 +87,14 @@
     <!-- 软件介绍 -->
     <div class="col-md-4 column">
         <h1>
-            Easypipe
+            Lims2018C
             <g:if test="${flash.message}">
                 <div class="home-message" role="status">${flash.message}</div>
             </g:if>
         </h1>
 
         <p>
-            Easypipe是一款具有管网模拟、优化、评价、控制等功能的在线应用程序。
+            Lims 2018是一款实验室信息管理系统。
         </p>
 
         <p>

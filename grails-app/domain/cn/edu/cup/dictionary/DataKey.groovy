@@ -57,6 +57,23 @@ class DataKey {
     }
 
     //------------------------------------------------------------------------------------------------------------------
+
+    /*
+    * DataKey 输出成 数据表,
+    * */
+    def DataKey2DataTableSimple() {
+        def dataTable = []
+        subDataKeys.each { e->
+            def item = []
+            item.add(e.dataTag)
+            item.add(e.dataKeyType)
+            item.add(e.dataUnit)
+            item.add("请在这里输入数据")
+            dataTable.add(item)
+        }
+        return dataTable
+    }
+
     //返回数据列数
     def enumItems() {
         def enumItems
