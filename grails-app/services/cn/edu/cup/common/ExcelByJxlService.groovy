@@ -24,7 +24,8 @@ class ExcelByJxlService {
                     sheet.addCell(label)
                 }
             }
-            //book.close()
+            book.write()
+            book.close()
         }
         return fileName
     }
