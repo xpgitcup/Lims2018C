@@ -214,6 +214,26 @@ class Operation4DataController {
     // 有关DataKeyA的处理
 
     /*
+    * 从文件中导入
+    * */
+
+    def importFromExcelFile(DataKey dataKey) {
+        println("${params}")
+        if (params.uploadedFile) {
+            //处理文件上传
+            def destDir = servletContext.getRealPath("/") + "file4import" + "/${dataKey.id}"
+            params.destDir = destDir
+            println(destDir)
+            def sf = commonService.upload(params)
+            println("上传${sf}成功...")
+            def data = excelByJxlService.importExcelFileToDataTable(sf)
+            println("${data}")
+        }
+        flash.message = "导入成功"
+        redirect(action: "index", model:[flash: flash])
+    }
+
+    /*
     * 生成列表模板
     * */
 
@@ -345,11 +365,11 @@ class Operation4DataController {
             h1("${dataKey.dataTag}列表：")
             //"f:table"(collection: "\${dataItemList}")
             table {
-                "g:each"(in:"\${dataItemList}", status:"i", var:"item") {
-                    tr(class:"\${(i % 2) == 0 ? 'even' : 'odd'}") {
-                        td{
-                            table{
-                                tr{
+                "g:each"(in: "\${dataItemList}", status: "i", var: "item") {
+                    tr(class: "\${(i % 2) == 0 ? 'even' : 'odd'}") {
+                        td {
+                            table {
+                                tr {
                                     td("\${item.id}")
                                     td("\${item.dataKey.dataTag}")
                                     td("\${item?.subDataItems?.size()}")

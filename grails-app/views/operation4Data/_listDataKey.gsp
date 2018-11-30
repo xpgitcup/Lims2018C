@@ -57,12 +57,16 @@
                     <a href="javascript: createDataItem(${item.id})">输入${item.dataTag}</a>
                 </td>
                 <td>
-                    <g:uploadForm controller="operation4DataKeyA" action="importFromExcelFile">
+                    <g:uploadForm controller="operation4Data" action="importFromExcelFile">
                         <div class="nav">
                             <g:hiddenField name="id" value="${item.id}"/>
                             <ul>
                                 <li>
                                     <input type="file" name="uploadedFile">
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="hasHead" checked="checked"/>
+                                    <label>有标题</label>
                                 </li>
                                 <li>
                                     <input type="submit" value="ok">
