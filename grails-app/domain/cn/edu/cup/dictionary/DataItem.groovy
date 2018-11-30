@@ -28,4 +28,12 @@ class DataItem {
             return "${dataKey}=${dataValue}${dataKey?.dataUnit}"
         }
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    def importFromDataTable(List dataTable) {
+        dataTable.eachWithIndex { Object entry, int i ->
+            def subItem = new DataItem(dataKey: dataKey.subDataKeys[i], dataValue: entry, upDataItem: this)
+            subDataItems.add(subItem)
+        }
+    }
 }

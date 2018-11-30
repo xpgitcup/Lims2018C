@@ -219,6 +219,7 @@ class Operation4DataController {
 
     def importFromExcelFile(DataKey dataKey) {
         println("${params}")
+        def dataCheck = ""
         if (params.uploadedFile) {
             //处理文件上传
             def destDir = servletContext.getRealPath("/") + "file4import" + "/${dataKey.id}"
@@ -227,10 +228,60 @@ class Operation4DataController {
             def sf = commonService.upload(params)
             println("上传${sf}成功...")
             def data = excelByJxlService.importExcelFileToDataTable(sf)
+            if (data.size()>0) {
+                dataCheck = checkHead(dataKey, data)
+            }
             println("${data}")
         }
-        flash.message = "导入成功"
-        redirect(action: "index", model:[flash: flash])
+        flash.message = dataCheck
+        redirect(action: "index")
+    }
+
+    private String checkHead(DataKey dataKey, data) {
+        def dataCheck = ""
+        def head = dataKey.DataKey2DataTableSimple()
+        println("data ${data}")
+        println("head ${head}")
+        if (params.hasHead) {
+            if (head.size() > data[0].size()) {
+                dataCheck += "数据列数不足;"
+            } else {
+                if (data.size() < 3) {
+                    dataCheck += "数据行数不够;"
+                } else {
+                    head.eachWithIndex { List<Object> entry, int i4c ->
+
+                    }
+                    for (int i = 0; i < 3; i++) {
+                        switch (i) {
+                            case 0:
+                                //对比标题
+
+                                break;
+                            case 1:
+                                //对比标题
+                                break;
+                            case 2:
+                                //对比标题
+                                break;
+                        }
+                    }
+                }
+            }
+            if (dataCheck.isEmpty()) {
+                def row = 0
+                data.eachWithIndex { List<Object> item, int iRow ->
+                    if (iRow > 2) {
+                        def dataItem = new DataItem(dataKey: dataKey)
+                        dataItem.importFromDataTable(data)
+                        dataItemService.save(dataItem)
+                        row++
+                    }
+                }
+                dataCheck += "导入成功${row}个记录."
+            }
+        }
+        dataCheck
     }
 
     /*

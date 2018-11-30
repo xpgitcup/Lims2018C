@@ -65,6 +65,10 @@
     </ul>
 </div>
 
+<g:if test="${flash.message}">
+    <div class="message" role="status">${flash.message}</div>
+</g:if>
+
 <div id="operation4DataDiv" class="easyui-tabs">
     <div id="maintainDataKeyDiv" title="数据模型维护">
         <div class="container">
