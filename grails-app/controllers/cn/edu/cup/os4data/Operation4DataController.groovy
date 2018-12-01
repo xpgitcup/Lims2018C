@@ -213,6 +213,15 @@ class Operation4DataController {
     //==================================================================================================================
     // 有关DataKeyA的处理
 
+    def configDataKey(DataKey dataKey) {
+        //def dataKey = DataKey.get(params.id)
+        if (request.xhr) {
+            render(template: 'configDataKey', model: [dataKey: dataKey])
+        } else {
+            respond dataKey
+        }
+    }
+
     /*
     * 从文件中导入
     * */

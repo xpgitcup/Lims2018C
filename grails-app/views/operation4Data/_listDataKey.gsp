@@ -34,6 +34,7 @@
                 <td>
                     <a href="javascript: showDataKey(${item.id})">显示/编辑</a>
                     <a href="javascript: maintainDataKey(${item.id})">维护</a>
+                    <a href="javascript: configDataKey(${item.id})">配置</a>
                 </td>
                 <td>
                     <a href="operation4Data/downloadTemplate/${item.id}">导入模板</a>

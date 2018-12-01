@@ -106,6 +106,19 @@ function updateUploadFileName(id) {
 // 数据项处理函数
 
 /*
+* 配置当前的数据模型
+* */
+function configDataKey(id) {
+    console.info("配置数学模型...")
+    var divName = readCookie("dataKeyView", "")
+    if (divName) {
+        ajaxRun("operation4Data/configDataKey", id, divName);
+    } else {
+        ajaxRun("operation4Data/configDataKey", id, "list" + "数据模型" + "Div");
+    }
+}
+
+/*
 * 创建数据项
 * */
 function createDataItem(id) {
