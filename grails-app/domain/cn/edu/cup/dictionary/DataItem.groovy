@@ -31,9 +31,16 @@ class DataItem {
 
     //------------------------------------------------------------------------------------------------------------------
     def importFromDataTable(List dataTable) {
-        dataTable.eachWithIndex { Object entry, int i ->
-            def subItem = new DataItem(dataKey: dataKey.subDataKeys[i], dataValue: entry, upDataItem: this)
-            subDataItems.add(subItem)
+        subDataItems = []
+        if (dataKey.subDataKeys.size() == dataTable.size()) {
+            println("导入：${dataTable}")
+            dataTable.eachWithIndex { Object entry, int i ->
+                def subItem = new DataItem(dataKey: dataKey.subDataKeys[i], dataValue: entry, upDataItem: this)
+                //subItem.save()
+                subDataItems.add(subItem)
+            }
+        } else {
+            println("${dataKey} ${dataTable} 不匹配！")
         }
     }
 }

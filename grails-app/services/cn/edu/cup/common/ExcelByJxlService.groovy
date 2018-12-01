@@ -22,7 +22,7 @@ class ExcelByJxlService {
             for (int r = 0; r < rowCount; r++) {
                 def item = []
                 for (int c = 0; c < colCount; c++) {
-                    item.add(sheet.getCell(c, r).getContents())
+                    item.add(sheet.getCell(c, r).getContents().trim())
                 }
                 dataTable.add(item)
             }

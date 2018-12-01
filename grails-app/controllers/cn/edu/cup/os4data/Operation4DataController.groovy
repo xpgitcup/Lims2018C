@@ -187,7 +187,7 @@ class Operation4DataController {
         if (params.view) {
             view = params.view
         }
-
+        println("采用${view}")
         if (request.xhr) {
             render(template: view, model: [dataItemList: dataItemList])
         } else {
@@ -220,7 +220,7 @@ class Operation4DataController {
     def importFromExcelFile(DataKey dataKey) {
         println("${params}")
         def dataCheck = ""
-        if (params.uploadedFile) {
+        if (!params.uploadedFile.empty) {
             //处理文件上传
             def destDir = servletContext.getRealPath("/") + "file4import" + "/${dataKey.id}"
             params.destDir = destDir
@@ -230,6 +230,21 @@ class Operation4DataController {
             def data = excelByJxlService.importExcelFileToDataTable(sf)
             if (data.size()>0) {
                 dataCheck = checkHead(dataKey, data)
+                if (dataCheck.isEmpty()) {
+                    def row = 0
+                    def ok = 0
+                    data.eachWithIndex { List<Object> item, int iRow ->
+                        if (iRow > 2) {
+                            def dataItem = new DataItem(dataKey: dataKey)
+                            dataItem.importFromDataTable(item)
+                            if (dataItemService.save(dataItem)) {
+                                ok ++
+                            }
+                            row++
+                        }
+                    }
+                    dataCheck += "共有${row}个记录，成功导入${ok}个。"
+                }
             }
             println("${data}")
         }
@@ -250,35 +265,20 @@ class Operation4DataController {
                     dataCheck += "数据行数不够;"
                 } else {
                     head.eachWithIndex { List<Object> entry, int i4c ->
-
-                    }
-                    for (int i = 0; i < 3; i++) {
-                        switch (i) {
-                            case 0:
-                                //对比标题
-
-                                break;
-                            case 1:
-                                //对比标题
-                                break;
-                            case 2:
-                                //对比标题
-                                break;
+                        println("${entry[0]}  ---  ${data[0][i4c]}")
+                        println("${entry[1]}  ---  ${data[1][i4c]}")
+                        println("${entry[2]}  ---  ${data[2][i4c]}")
+                        if (!entry[0].equals(data[0][i4c])) {
+                            dataCheck += "${i4c} 数据标题不符;"
+                        }
+                        if (!entry[1].toString().equals(data[1][i4c])) {
+                            dataCheck += "${i4c} 数据类型不符;"
+                        }
+                        if (entry[2] != data[2][i4c]) {
+                            dataCheck += "${i4c} 单位不符;"
                         }
                     }
                 }
-            }
-            if (dataCheck.isEmpty()) {
-                def row = 0
-                data.eachWithIndex { List<Object> item, int iRow ->
-                    if (iRow > 2) {
-                        def dataItem = new DataItem(dataKey: dataKey)
-                        dataItem.importFromDataTable(data)
-                        dataItemService.save(dataItem)
-                        row++
-                    }
-                }
-                dataCheck += "导入成功${row}个记录."
             }
         }
         dataCheck

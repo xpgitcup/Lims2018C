@@ -15,7 +15,7 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <!--f:table collection="${dataItemList}"/-->
+    <f:table collection="${dataItemList}"/>
     <table>
         <thead>
         <th>id</th>
