@@ -258,8 +258,8 @@ class Operation4DataController {
         println("data ${data}")
         println("head ${head}")
         if (params.hasHead) {
-            if (head.size() > data[0].size()) {
-                dataCheck += "数据列数不足;"
+            if (head.size() != data[0].size()) {
+                dataCheck += "数据列数不匹配;模板=${head.size()},数据=${data[0].size()}"
             } else {
                 if (data.size() < 3) {
                     dataCheck += "数据行数不够;"
@@ -282,6 +282,19 @@ class Operation4DataController {
             }
         }
         dataCheck
+    }
+
+    /*
+    * 删除列表模板
+    * */
+
+    def deleteListViewTemplate(DataKey dataKey) {
+        def fileName = dataKeyListViewFileName(dataKey)
+        def file = new File(fileName)
+        if (file.exists()) {
+            file.delete()
+        }
+        redirect(action: "index")
     }
 
     /*

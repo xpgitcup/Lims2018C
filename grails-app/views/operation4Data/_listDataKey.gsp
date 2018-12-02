@@ -18,7 +18,7 @@
         <th>ID</th>
         <th>名称</th>
         <th>操作</th>
-        <th>下载</th>
+        <th>模板相关</th>
         <th>输入</th>
         <th>导入数据</th>
         </thead>
@@ -44,7 +44,7 @@
                         <a href="operation4Data/downloadViewTemplate/${item.id}">生成输入界面</a>
                     </g:else>
                     <g:if test="${dataKeyListViewList.get(item.id)}">
-                        <a href="operation4Data/downloadListViewTemplate/${item.id}">列表模板</a>
+                        <a href="operation4Data/deleteListViewTemplate/${item.id}">恢复缺省列表模板</a>
                     </g:if>
                     <g:else>
                         <a href="operation4Data/downloadListViewTemplate/${item.id}">生成列表模板</a>

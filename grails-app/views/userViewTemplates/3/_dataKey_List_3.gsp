@@ -4,7 +4,7 @@
   </head>
   <body>
     <div id="list-dataItem" class="content scaffold-list" role="main">
-      <h1>教师信息列表：</h1>
+      <h1>学生信息列表：</h1>
       <table>
         <g:each in="${dataItemList}" status="i" var="item">
           <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
@@ -29,6 +29,21 @@
                   <td>${item?.subDataItems[2].id}</td>
                   <td>${item?.subDataItems[2].dataKey.dataTag}</td>
                   <td>${item?.subDataItems[2].dataValue}</td>
+                </tr>
+                <tr>
+                  <td>${item?.subDataItems[3].id}</td>
+                  <td>${item?.subDataItems[3].dataKey.dataTag}</td>
+                  <td>${item?.subDataItems[3].dataValue}</td>
+                </tr>
+                <tr>
+                  <td>${item?.subDataItems[4].id}</td>
+                  <td>${item?.subDataItems[4].dataKey.dataTag}</td>
+                  <td>${item?.subDataItems[4].dataValue}</td>
+                </tr>
+                <tr>
+                  <td>${item?.subDataItems[5].id}</td>
+                  <td>${item?.subDataItems[5].dataKey.dataTag}</td>
+                  <td>${item?.subDataItems[5].dataValue}</td>
                 </tr>
               </table>
             </td>
