@@ -20,10 +20,12 @@
     <g:set var="entityName" value="CommonDataA"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${entityName}维护</title>
-    <asset:javascript src="cn/edu/cup/dictionary/${entityName}.js"/>
+    <asset:javascript src="cn/edu/cup/commondata/${entityName}.js"/>
 </head>
 
 <body>
+<div id="commonTabList">${commonTabList}</div>
+<div id="commonIdList">${commonIdList}</div>
 <div class="nav">
     <ul>
         <li><a href="#">当前功能：</a></li>
@@ -39,7 +41,7 @@
     </ul>
 </div>
 
-<div id="operation4UserDefinedFunctionDiv" class="easyui-tabs">
+<div id="operation4CommonDataADiv" class="easyui-tabs">
 </div>
 </body>
 </html>
