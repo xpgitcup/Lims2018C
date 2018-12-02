@@ -8,8 +8,11 @@ class BootStrap {
 
     def initService
     def grailsApplication
+    def commonService
 
     def init = { servletContext ->
+        commonService.webRootPath = servletContext.getRealPath("/")
+
         Logger LOG = Logger.getLogger(this.class.getName());
         environments {
             development {

@@ -9,6 +9,7 @@ import javax.servlet.ServletContext
 class CommonService {
 
     def grailsApplication
+    def webRootPath = ""
 
     def applicationName() {
         println("${grailsApplication}")
@@ -121,9 +122,7 @@ class CommonService {
     * */
 
     def menuConfigFileName() {
-        def servletContext = getServletContext()
-        def webRootDir = servletContext.getRealPath("/")
-        def fileName = "${webRootDir}systemConfig/systemMenu.json"
+        def fileName = "${webRootPath}systemConfig/systemMenu.json"
         return fileName
     }
 
@@ -151,28 +150,9 @@ class CommonService {
         RequestContextHolder.currentRequestAttributes().getSession()
     }
 
-    //获取当前程序的根目录
-    def getApplicationRoot() {
-        return getServletContext().getRealPath("/")
-    }
-
     //获取当前程序名称
     def getApplicationName() {
         return grails.util.Metadata.current.'app.name'
-    }
-
-    //获取当前网站的根目录
-    def getWebRootDir() {
-        def appRoot = getApplicationRoot()
-        def appName = getApplicationName()
-        def kk = appRoot.lastIndexOf(appName)
-        def webRoot
-        if (kk > -1) {
-            webRoot = appRoot.substring(0, kk)
-        } else {
-            webRoot = appRoot
-        }
-        return webRoot
     }
 
     /*
@@ -192,6 +172,5 @@ class CommonService {
         }
         return result
     }
-
 
 }
