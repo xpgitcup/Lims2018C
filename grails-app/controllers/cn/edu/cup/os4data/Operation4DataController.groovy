@@ -14,14 +14,15 @@ import static org.springframework.http.HttpStatus.NO_CONTENT
 import static org.springframework.http.HttpStatus.OK
 
 class Operation4DataController {
-
+    // 系统定义的服务
     def dataDictionaryService
     def dataKeyService
     def dataItemService
+    // 用户定义的服务
     def treeViewService
     def commonService
     def excelByJxlService
-
+    def operation4DictionaryService
     //==================================================================================================================
     // 有关DataItem的处理
 
@@ -39,7 +40,8 @@ class Operation4DataController {
             dataItemService.save(dataItem)
             if (params.uploadedFile) {
                 //处理文件上传
-                def destDir = servletContext.getRealPath("/") + "uploads" + "/${dataItem.dataKey.id}"
+                //def destDir = servletContext.getRealPath("/") + "uploads" + "/${dataItem.dataKey.id}"
+                def destDir = operation4DictionaryService.uploadPath(dataItem)
                 def uploadedFileNames = params.uploadedFile
                 def uploadedFileIndex = params.uploadedFileIndex
                 def uploadedFileDataKeyId = params.uploadedFileDataKeyId
@@ -90,7 +92,7 @@ class Operation4DataController {
         def view = 'createDataItem'
         String responseText
         // 如果有生成的视图，就是用生成的静态视图
-        def dataKeyViewFileName = dataKeyInputViewFileName(dataKey)
+        def dataKeyViewFileName = operation4DictionaryService.dataKeyInputViewFileName(dataKey)
         def dataKeyViewFile = new File(dataKeyViewFileName)
         if (dataKeyViewFile.exists()) {
             def template = new groovy.text.StreamingTemplateEngine().createTemplate(dataKeyViewFile.text)
@@ -111,37 +113,6 @@ class Operation4DataController {
         } else {
             respond dataItem
         }
-    }
-
-    /*
-    * 模型列表模板文件名
-    * */
-
-    private def dataKeyImportTemplateFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userImportTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/dataKey_Import_${dataKey.id}.xls"
-    }
-
-    private def dataKeyListViewFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
-    }
-
-    private def dataKeyListViewTemplateName(DataKey dataKey) {
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "/${controllerName}/${dataKey.id}/dataKey_List_${dataKey.id}.gsp"
-    }
-
-    /*
-    * 模型输入模板文件名
-    * */
-
-    private def dataKeyInputViewFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_${dataKey.id}.gsp"
     }
 
     private DataItem getNewDataItem(DataKey dataKey) {
@@ -176,10 +147,10 @@ class Operation4DataController {
         //--------------------------------------------------------------------------------------------------------------
         def view = "listDataItem"
         if (dataKey) {
-            def listViewName = dataKeyListViewFileName(dataKey)
+            def listViewName = operation4DictionaryService.dataKeyListViewFileName(dataKey)
             def dataKeyListViewFile = new File(listViewName)
             if (dataKeyListViewFile.exists()) {
-                view = dataKeyListViewTemplateName(dataKey)
+                view = operation4DictionaryService.dataKeyListViewTemplateName(dataKey)
             }
         }
         //--------------------------------------------------------------------------------------------------------------
@@ -222,7 +193,8 @@ class Operation4DataController {
         def dataCheck = ""
         if (!params.uploadedFile.empty) {
             //处理文件上传
-            def destDir = servletContext.getRealPath("/") + "file4import" + "/${dataKey.id}"
+            //def destDir = servletContext.getRealPath("/") + "file4import" + "/${dataKey.id}"
+            def destDir = operation4DictionaryService.uploadFile4Import(dataKey)
             params.destDir = destDir
             println(destDir)
             def sf = commonService.upload(params)
@@ -289,7 +261,7 @@ class Operation4DataController {
     * */
 
     def deleteListViewTemplate(DataKey dataKey) {
-        def fileName = dataKeyListViewFileName(dataKey)
+        def fileName = operation4DictionaryService.dataKeyListViewFileName(dataKey)
         def file = new File(fileName)
         if (file.exists()) {
             file.delete()
@@ -302,7 +274,7 @@ class Operation4DataController {
     * */
 
     def downloadListViewTemplate(DataKey dataKey) {
-        def fileName = dataKeyListViewFileName(dataKey)
+        def fileName = operation4DictionaryService.dataKeyListViewFileName(dataKey)
         def file = new File(fileName)
         def dir = file.getParentFile()
         if (!dir.exists()) {
@@ -328,7 +300,7 @@ class Operation4DataController {
     * */
 
     def downloadViewTemplate(DataKey dataKey) {
-        def fileName = dataKeyInputViewFileName(dataKey)
+        def fileName = operation4DictionaryService.dataKeyInputViewFileName(dataKey)
         def file = new File(fileName)
         def dir = file.getParentFile()
         if (!dir.exists()) {
@@ -556,7 +528,7 @@ class Operation4DataController {
     **/
 
     def downloadTemplate(DataKey dataKey) {
-        def path = dataKeyImportTemplateFileName(dataKey)
+        def path = operation4DictionaryService.dataKeyImportTemplateFileName(dataKey)
         println("${path}")
         def file = new File(path)
         def dir = file.getParentFile()
@@ -719,14 +691,14 @@ class Operation4DataController {
         // 检查用户视图的存在性
         def dataKeyListViewList = [:]
         dataKeyList.each { e ->
-            GString fileName = dataKeyListViewFileName(e)
+            GString fileName = operation4DictionaryService.dataKeyListViewFileName(e)
             def file = new File(fileName)
             dataKeyListViewList.put(e.id, file.exists())
         }
         // 检查用户视图的存在性
         def dataKeyViewList = [:]
         dataKeyList.each { e ->
-            GString fileName = dataKeyInputViewFileName(e)
+            GString fileName = operation4DictionaryService.dataKeyInputViewFileName(e)
             def file = new File(fileName)
             dataKeyViewList.put(e.id, file.exists())
         }
