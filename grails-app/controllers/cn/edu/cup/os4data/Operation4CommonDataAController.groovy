@@ -6,6 +6,8 @@ import grails.converters.JSON
 
 class Operation4CommonDataAController {
 
+    def operation4DictionaryService
+
     def count() {
         def dataKey = DataKey.get(session.commonDataKey)
         def count = DataItem.countByDataKey(dataKey)
@@ -33,10 +35,10 @@ class Operation4CommonDataAController {
         //--------------------------------------------------------------------------------------------------------------
         def view = "listDataItem"
         if (dataKey) {
-            def listViewName = dataKeyListViewFileName(dataKey)
+            def listViewName = operation4DictionaryService.dataKeyListViewFileName(dataKey)
             def dataKeyListViewFile = new File(listViewName)
             if (dataKeyListViewFile.exists()) {
-                view = dataKeyListViewTemplateName(dataKey)
+                view = operation4DictionaryService.dataKeyListViewTemplateName(dataKey)
             }
         }
         //--------------------------------------------------------------------------------------------------------------

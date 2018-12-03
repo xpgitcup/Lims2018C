@@ -41,7 +41,7 @@ class Operation4DataController {
             if (params.uploadedFile) {
                 //处理文件上传
                 //def destDir = servletContext.getRealPath("/") + "uploads" + "/${dataItem.dataKey.id}"
-                def destDir = operation4DictionaryService.uploadPath(dataItem)
+                def destDir = operation4DictionaryService.uploadFilePath4DataItem(dataItem)
                 def uploadedFileNames = params.uploadedFile
                 def uploadedFileIndex = params.uploadedFileIndex
                 def uploadedFileDataKeyId = params.uploadedFileDataKeyId
@@ -318,10 +318,6 @@ class Operation4DataController {
 
         redirect(action: "index")
     }
-
-    /*
-    * 生成针对数据模型的显示模板
-    * */
 
     /*
     * 生成针对数据模型的列表模板
@@ -691,14 +687,14 @@ class Operation4DataController {
         // 检查用户视图的存在性
         def dataKeyListViewList = [:]
         dataKeyList.each { e ->
-            GString fileName = operation4DictionaryService.dataKeyListViewFileName(e)
+            def fileName = operation4DictionaryService.dataKeyListViewFileName(e)
             def file = new File(fileName)
             dataKeyListViewList.put(e.id, file.exists())
         }
         // 检查用户视图的存在性
         def dataKeyViewList = [:]
         dataKeyList.each { e ->
-            GString fileName = operation4DictionaryService.dataKeyInputViewFileName(e)
+            def fileName = operation4DictionaryService.dataKeyInputViewFileName(e)
             def file = new File(fileName)
             dataKeyViewList.put(e.id, file.exists())
         }

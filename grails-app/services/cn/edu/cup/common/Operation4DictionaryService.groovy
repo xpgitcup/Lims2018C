@@ -9,8 +9,15 @@ class Operation4DictionaryService {
 
     def commonService
 
-    def uploadPath(DataItem dataItem) {
-        return "????"
+    def uploadFile4Import(DataKey dataKey) {
+        def webRootPath = commonService.webRootPath
+        return webRootPath + "/uploads4Import/${dataItem.dataKey.id}"
+    }
+
+    def uploadFilePath4DataItem(DataItem dataItem) {
+        //def destDir = servletContext.getRealPath("/") + "uploads" + "/${dataItem.dataKey.id}"
+        def webRootPath = commonService.webRootPath
+        return webRootPath + "/uploads/${dataItem.dataKey.id}"
     }
 
     /*
@@ -18,20 +25,26 @@ class Operation4DictionaryService {
     * */
 
     def dataKeyImportTemplateFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userImportTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/dataKey_Import_${dataKey.id}.xls"
+        def webRootPath = commonService.webRootPath
+        //def nowPath = this.class.getResource("/").getPath()
+        //def controllerName = "userImportTemplates"//this.controllerName
+        //return "${nowPath}${controllerName}/${dataKey.id}/dataKey_Import_${dataKey.id}.xls"
+        return webRootPath + "userImportTemplates/${dataKey.id}/dataKey_Import_${dataKey.id}.xls"
     }
 
     def dataKeyListViewFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
+        def webRootPath = commonService.webRootPath
+        //def nowPath = this.class.getResource("/").getPath()
+        //def controllerName = "userViewTemplates"//this.controllerName
+        //return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
+        return webRootPath + "userViewTemplates/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
     }
 
     def dataKeyListViewTemplateName(DataKey dataKey) {
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "/${controllerName}/${dataKey.id}/dataKey_List_${dataKey.id}.gsp"
+        def webRootPath = commonService.webRootPath
+        //def controllerName = "userViewTemplates"//this.controllerName
+        //return "/${controllerName}/${dataKey.id}/dataKey_List_${dataKey.id}.gsp"
+        return "/userViewTemplates/${dataKey.id}/dataKey_List_${dataKey.id}.gsp"
     }
 
     /*
@@ -39,9 +52,11 @@ class Operation4DictionaryService {
     * */
 
     def dataKeyInputViewFileName(DataKey dataKey) {
-        def nowPath = this.class.getResource("/").getPath()
-        def controllerName = "userViewTemplates"//this.controllerName
-        return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_${dataKey.id}.gsp"
+        def webRootPath = commonService.webRootPath
+        //def nowPath = this.class.getResource("/").getPath()
+        //def controllerName = "userViewTemplates"//this.controllerName
+        //return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_${dataKey.id}.gsp"
+        return webRootPath + "userViewTemplates/${dataKey.id}/_dataKey_${dataKey.id}.gsp"
     }
 
 
