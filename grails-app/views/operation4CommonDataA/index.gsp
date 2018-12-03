@@ -26,6 +26,7 @@
 <body>
 <div id="commonTabList">${commonTabList}</div>
 <div id="commonIdList">${commonIdList}</div>
+<div>${session.fun}</div>
 <div class="nav">
     <ul>
         <li><a href="#">当前功能：</a></li>

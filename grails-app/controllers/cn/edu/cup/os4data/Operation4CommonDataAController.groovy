@@ -33,19 +33,7 @@ class Operation4CommonDataAController {
         }
         println("查询结果：${dataKey} -- ${count}:  ${dataItemList}")
         //--------------------------------------------------------------------------------------------------------------
-        def view = "listDataItem"
-        if (dataKey) {
-            def listViewName = operation4DictionaryService.dataKeyListViewFileName(dataKey)
-            def dataKeyListViewFile = new File(listViewName)
-            if (dataKeyListViewFile.exists()) {
-                view = operation4DictionaryService.dataKeyListViewTemplateName(dataKey)
-            }
-        }
-        //--------------------------------------------------------------------------------------------------------------
-        // 如果用户指定，使用用户指定的
-        if (params.view) {
-            view = params.view
-        }
+        def view = operation4DictionaryService.dataKeyListViewTemplateName4Function(dataKey)
         println("采用${view}")
         if (request.xhr) {
             render(template: view, model: [dataItemList: dataItemList])
@@ -61,7 +49,9 @@ class Operation4CommonDataAController {
         if (params.dataKey) {
             def dataKey = DataKey.get(params.dataKey)
             session.commonDataKey = params.dataKey
-            def tabNameListFile = servletContext.getRealPath("/") + "commonData" + "/dataKey_${dataKey.id}.config"
+            session.fun = params.fun
+            //def tabNameListFile = servletContext.getRealPath("/") + "commonData" + "/dataKey_${dataKey.id}.config"
+            def tabNameListFile = operation4DictionaryService.functionConfigFileName(dataKey)
             def dataKeyFile = new File(tabNameListFile)
             if (dataKeyFile.exists()) {
                 def tmp = dataKeyFile.text.split(" ")

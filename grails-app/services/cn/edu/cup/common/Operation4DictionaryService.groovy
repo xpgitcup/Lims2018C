@@ -9,6 +9,12 @@ class Operation4DictionaryService {
 
     def commonService
 
+    def functionConfigFileName(DataKey dataKey) {
+        def webRootPath = commonService.webRootPath
+        //def tabNameListFile = servletContext.getRealPath("/") +
+        return webRootPath + "commonData" + "/dataKey_${dataKey.id}.config"
+    }
+
     def uploadFile4Import(DataKey dataKey) {
         def webRootPath = commonService.webRootPath
         return webRootPath + "/uploads4Import/${dataItem.dataKey.id}"
@@ -38,6 +44,13 @@ class Operation4DictionaryService {
         //def controllerName = "userViewTemplates"//this.controllerName
         //return "${nowPath}${controllerName}/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
         return webRootPath + "userViewTemplates/${dataKey.id}/_dataKey_List_${dataKey.id}.gsp"
+    }
+
+    def dataKeyListViewTemplateName4Function(DataKey dataKey) {
+        def webRootPath = commonService.webRootPath
+        //def controllerName = "userViewTemplates"//this.controllerName
+        //return "/${controllerName}/${dataKey.id}/dataKey_List_${dataKey.id}.gsp"
+        return "/userViewTemplates/${dataKey.id}/dataKey_List_${dataKey.id}${session.fun}.gsp"
     }
 
     def dataKeyListViewTemplateName(DataKey dataKey) {
