@@ -93,12 +93,12 @@
         "menuContext": "学生管理",
         "menuAction": "operation4CommonDataA/index?dataKey=3&function=学生管理",
         "menuDescription": "新生加入到系统中，创建用户",
-        "upMenuItem": "学生管理",
+        "upMenuItem": "教师服务",
         "menuOrder": 0
       },
       {
-        "menuContext": "按项目检索",
-        "menuAction": "operation4CommonDataA/index",
+        "menuContext": "项目管理",
+        "menuAction": "operation4CommonDataA/index?dataKey=4&function=项目管理",
         "menuDescription": "#",
         "upMenuItem": "教师服务",
         "menuOrder": 0
