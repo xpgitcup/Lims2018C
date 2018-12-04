@@ -133,7 +133,7 @@
                 在线:${session?.onlineCount}人:
             </li>
             <li>
-                当前用户：${session?.systemUser?.userName}[${session?.systemUser?.roleAttribute}]
+                当前用户：${session?.systemUser?.userName}/${session?.realName}[${session?.systemUser?.roleAttribute}]
             </li>
         </ul>
     </div>

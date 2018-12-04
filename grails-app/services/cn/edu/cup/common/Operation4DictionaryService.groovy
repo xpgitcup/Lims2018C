@@ -2,17 +2,55 @@ package cn.edu.cup.common
 
 import cn.edu.cup.dictionary.DataItem
 import cn.edu.cup.dictionary.DataKey
+import cn.edu.cup.system.SystemUser
 import grails.gorm.transactions.Transactional
 
 @Transactional
 class Operation4DictionaryService {
 
     def commonService
+    def dataKeyConfig
+    def dataItemService
+
+    def getRealName(SystemUser systemUser) {
+        def name = ""
+        def id = 0
+        println("查找真实姓名....")
+        if (!systemUser.appendAttribute.isEmpty()) {
+            println("配置信息：${dataKeyConfig}")
+            id = systemUser.appendAttribute.toInteger()
+            if (id) {
+                def dataItem = dataItemService.get(id)
+                println("找到数据项：${dataItem} ${dataItem.dataKey.id}")
+                def keyId = dataKeyConfig.get(dataItem.dataKey.id)
+                println("对应：${keyId}")
+                name = dataItem.subDataItems[keyId].dataValue
+            }
+        }
+        return name
+    }
+
+    def getFunctionListFromProperties(Properties properties, key) {
+        def fs = []
+        def tmp = properties.getProperty(key)
+        def ttmp
+        if (tmp) {
+            ttmp = tmp.split(",")
+            ttmp.each { e->
+                def ffs = e.split(":")
+                fs.add(ffs)
+            }
+        }
+        return fs
+    }
 
     String[] getListFromProperties(Properties properties, key) {
         def tmp = properties.getProperty(key)
-        def ttmp = tmp.split(",")
-        ttmp
+        def ttmp = []
+        if (tmp) {
+            ttmp = tmp.split(",")
+        }
+        return ttmp
     }
 
     def functionConfigFileName(DataKey dataKey) {

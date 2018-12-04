@@ -83,9 +83,9 @@
     ]
   },
   {
-    "menuContext": "学生管理",
+    "menuContext": "教师服务",
     "menuAction": "#",
-    "menuDescription": "维护学生信息",
+    "menuDescription": "便于教师检查进度",
     "roleAttribute": "系统维护",
     "menuOrder": 0,
     "menuItems": [
@@ -96,22 +96,6 @@
         "upMenuItem": "学生管理",
         "menuOrder": 0
       },
-      {
-        "menuContext": "学生毕业",
-        "menuAction": "operation4CommonDataA/index",
-        "menuDescription": "将学生移除用户库",
-        "upMenuItem": "学生管理",
-        "menuOrder": 0
-      }
-    ]
-  },
-  {
-    "menuContext": "教师服务",
-    "menuAction": "#",
-    "menuDescription": "便于教师检查进度",
-    "roleAttribute": "系统维护",
-    "menuOrder": 0,
-    "menuItems": [
       {
         "menuContext": "按项目检索",
         "menuAction": "operation4CommonDataA/index",
@@ -131,6 +115,22 @@
         "menuAction": "operation4CommonDataA/index",
         "menuDescription": "维护项目参与人员",
         "upMenuItem": "教师服务",
+        "menuOrder": 0
+      }
+    ]
+  },
+  {
+    "menuContext": "学生服务",
+    "menuAction": "#",
+    "menuDescription": "#",
+    "roleAttribute": "学生服务",
+    "menuOrder": 0,
+    "menuItems": [
+      {
+        "menuContext": "工作汇报",
+        "menuAction": "operation4CommonDataA/index?dataKey=3&function=工作汇报",
+        "menuDescription": "上传每周工作汇报",
+        "upMenuItem": "学生服务",
         "menuOrder": 0
       }
     ]

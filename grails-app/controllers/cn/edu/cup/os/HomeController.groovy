@@ -13,6 +13,7 @@ class HomeController {
 
     def systemCommonService
     def treeViewService
+    def operation4DictionaryService
 
     /*
     * 列出日志对象
@@ -145,6 +146,8 @@ class HomeController {
             session.systemUser = systemUser
             //初始化用户菜单
             listSystemMenu()
+            //查找真实的用户名
+            session.realName = operation4DictionaryService.getRealName(systemUser)
             //在会话中登记用户
             registeUserInSession(systemUser)
             systemCommonService.recordLog(session, request, params)

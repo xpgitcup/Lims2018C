@@ -9,7 +9,7 @@ import javax.servlet.ServletContext
 class CommonService {
 
     def grailsApplication
-    def webRootPath = ""
+    def webRootPath = ""        // 公用的变量
 
     def applicationName() {
         println("${grailsApplication}")

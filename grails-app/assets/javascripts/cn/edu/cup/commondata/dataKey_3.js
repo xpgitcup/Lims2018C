@@ -36,7 +36,13 @@ function loadDataItem(title, page, pageSize) {
     $.cookie("currentPage" + title, page);
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
 function selectCurrentKey(id) {
     $.cookie("currentKey" + "学生列表", id)
     $("#当前学生").html(id)
+}
+
+function import2systemUserGrade(grade) {
+
 }

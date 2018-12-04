@@ -6,6 +6,7 @@ import cn.edu.cup.system.SystemMenu
 import cn.edu.cup.system.SystemSponser
 import cn.edu.cup.system.SystemTitle
 import cn.edu.cup.system.SystemUser
+import com.alibaba.fastjson.JSON
 import grails.gorm.transactions.Transactional
 
 import javax.servlet.ServletContext
@@ -15,11 +16,9 @@ class InitService {
 
     def grailsApplication
     def dataSource
-    def dataDictionaryService
     def systemMenuService
-    def dataKeyService
-    def dataItemService
     def commonService
+    def operation4DictionaryService
 
     /**
      * 初始化代码__开发环境下的初始化代码
@@ -197,6 +196,7 @@ class InitService {
             def inf = new FileInputStream(configFile)
             def reader = new InputStreamReader(inf, "UTF-8")
             config.load(reader)
+            // 处理数据库脚本
             def scriptsTemp = config.getProperty("scripts")
             println(scriptsTemp)
             if (scriptsTemp) {
@@ -206,10 +206,16 @@ class InitService {
                     loadScripts("${webRootDir}${e}")
                 }
             }
+            //处理用户关键字配置
+            def tmp = config.getProperty("dataKeyConfig")
+            println("ini 的配置信息: ${tmp}")
+            operation4DictionaryService.dataKeyConfig = JSON.parse(tmp)
         } else {
             def of = new FileOutputStream(configFile, false)
             def ow = new OutputStreamWriter(of, "utf-8")
             config.setProperty("scripts", "文件1,文件2")
+            def tmp = ["3":1, "1":1]
+            config.setProperty("dataKeyConfig", JSON.toJSONString(tmp))
             //config.storeToXML(of, "系统配置文件", "utf-8")
             config.store(ow, "系统配置文件")
             println("创建配置文件.")

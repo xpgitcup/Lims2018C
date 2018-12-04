@@ -5,6 +5,7 @@ class SystemUser {
     String  userName
     String  password
     String  roleAttribute = "公共服务"
+    String  appendAttribute = ""
 
     static mapping = {
     }
@@ -13,6 +14,7 @@ class SystemUser {
         userName(unique:true)
         password(password:true)
         roleAttribute(nullable: true)
+        appendAttribute(nullable: true)
     }
  
     def beforeInsert() {

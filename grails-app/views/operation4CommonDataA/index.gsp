@@ -27,7 +27,7 @@
 <div id="commonTabList" class="hidden">${commonTabList}</div>
 
 <div id="commonIdList" class="hidden">${commonIdList}</div>
-<div>${ids}</div>
+
 <div class="nav">
     <ul>
         <g:each in="${ids}" status="i" var="item">
@@ -39,6 +39,13 @@
             <li>
                 <a href="#">
                     <div id="${item}">${item}</div>
+                </a>
+            </li>
+        </g:each>
+        <g:each in="${commonFunctionList}" status="i" var="item">
+            <li>
+                <a href="javascript: ${item[1]}">
+                    <div>${item[0]}</div>
                 </a>
             </li>
         </g:each>
