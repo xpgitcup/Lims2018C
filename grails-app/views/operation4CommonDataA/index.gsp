@@ -20,27 +20,34 @@
     <g:set var="entityName" value="CommonDataA"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${entityName}维护</title>
-    <asset:javascript src="cn/edu/cup/commondata/${entityName}.js"/>
+    <asset:javascript src="cn/edu/cup/commondata/${jsFileName}.js"/>
 </head>
 
 <body>
-<div id="commonTabList">${commonTabList}</div>
-<div id="commonIdList">${commonIdList}</div>
-<div>${session.fun}</div>
+<div id="commonTabList" class="hidden">${commonTabList}</div>
+
+<div id="commonIdList" class="hidden">${commonIdList}</div>
+<div>${ids}</div>
 <div class="nav">
     <ul>
-        <li><a href="#">当前功能：</a></li>
-        <li><a href="#"><div id="currentUserDefinedFunction"></div></a></li>
-        <li><a href="#">当前类库：</a></li>
-        <li><a href="#"><div id="currentLibrary"></div></a></li>
-        <li><a href="#">当前类：</a></li>
-        <li><a href="#"><div id="currentClass"></div></a></li>
-        <li><a href="#">当前方法：</a></li>
-        <li><a href="#"><div id="currentMethod"></div></a></li>
-        <li><a href="javascript: createUserDefinedFunction()" class="create">新功能</a></li>
-        <li><a href="javascript: createUserClassLibrary()" class="create">新类库</a></li>
+        <g:each in="${ids}" status="i" var="item">
+            <li>
+                <a href="#">
+                    <div>${item}</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div id="${item}">${item}</div>
+                </a>
+            </li>
+        </g:each>
     </ul>
 </div>
+
+<g:if test="${flash.message}">
+    <div class="message" role="status">${flash.message}</div>
+</g:if>
 
 <div id="operation4CommonDataADiv" class="easyui-tabs">
 </div>

@@ -33,7 +33,7 @@ class Operation4CommonDataAController {
         }
         println("查询结果：${dataKey} -- ${count}:  ${dataItemList}")
         //--------------------------------------------------------------------------------------------------------------
-        def view = operation4DictionaryService.dataKeyListViewTemplateName4Function(dataKey)
+        def view = session.currentView
         println("采用${view}")
         if (request.xhr) {
             render(template: view, model: [dataItemList: dataItemList])
@@ -43,28 +43,46 @@ class Operation4CommonDataAController {
     }
 
     def index() {
+        def currentFunction
         def commonTabList = []
         def commonIdList = []
-        println("${params}")
+        def jsFileName = ""
+        println("index ${params}")
         if (params.dataKey) {
             def dataKey = DataKey.get(params.dataKey)
             session.commonDataKey = params.dataKey
-            session.fun = params.fun
+            currentFunction = params.function
+            jsFileName = "dataKey_${params.dataKey}"
             //def tabNameListFile = servletContext.getRealPath("/") + "commonData" + "/dataKey_${dataKey.id}.config"
             def tabNameListFile = operation4DictionaryService.functionConfigFileName(dataKey)
             def dataKeyFile = new File(tabNameListFile)
             if (dataKeyFile.exists()) {
-                def tmp = dataKeyFile.text.split(" ")
-                commonTabList.addAll(tmp)
-                tmp.each { e->
-                    commonIdList.add("id" + e)
+                Properties properties = new Properties()
+                def infs = new FileInputStream(dataKeyFile)
+                properties.load(new InputStreamReader(infs, "utf-8"))
+                if (properties) {
+                    println(properties)
+                    // 标签页的配置
+                    commonTabList = operation4DictionaryService.getListFromProperties(properties, currentFunction + ".tabList")
+                    commonIdList = operation4DictionaryService.getListFromProperties(properties, "${currentFunction}.idList")
+                    println("${commonTabList} ${commonIdList}")
+                    // 视图
+                    def viewName = properties.getProperty("${currentFunction}.view")
+                    session.currentView = "/userViewTemplates/${dataKey.id}/${viewName}.gsp"
+                } else {
+                    flash.message = "找不到配置信息..."
                 }
-                println("${commonTabList} ${commonIdList}")
+            } else {
+                flash.message = "找不到文件${tabNameListFile}。"
             }
         }
-        model:[
+        model:
+        [
+                jsFileName   : jsFileName,
+                ids          : commonIdList,
                 commonTabList: com.alibaba.fastjson.JSON.toJSONString(commonTabList),
-                commonIdList: com.alibaba.fastjson.JSON.toJSONString(commonIdList)
+                commonIdList : com.alibaba.fastjson.JSON.toJSONString(commonIdList)
         ]
     }
+
 }
