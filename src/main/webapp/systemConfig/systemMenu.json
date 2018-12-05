@@ -97,22 +97,22 @@
         "menuOrder": 0
       },
       {
-        "menuContext": "项目管理",
-        "menuAction": "operation4CommonDataA/index?dataKey=4&function=项目管理",
+        "menuContext": "学生维护",
+        "menuAction": "operation4CommonDataB/index?dataKey=3&function=学生维护",
         "menuDescription": "#",
         "upMenuItem": "教师服务",
         "menuOrder": 0
       },
       {
         "menuContext": "按学生检索",
-        "menuAction": "operation4CommonDataA/index",
+        "menuAction": "operation4CommonDataB/index?dataKey=4&function=项目维护",
         "menuDescription": "#",
         "upMenuItem": "教师服务",
         "menuOrder": 0
       },
       {
-        "menuContext": "项目管理",
-        "menuAction": "operation4CommonDataA/index",
+        "menuContext": "项目维护",
+        "menuAction": "operation4CommonDataB/index?dataKey=4&dataKey=19&function=项目维护",
         "menuDescription": "维护项目参与人员",
         "upMenuItem": "教师服务",
         "menuOrder": 0

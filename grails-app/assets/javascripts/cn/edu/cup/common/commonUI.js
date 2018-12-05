@@ -40,11 +40,11 @@ function tabPagesManagerA(tabsName, tabNameList, idList, listFunction, countFunc
             pageNumber: currentPage,
             onSelectPage: function (pageNumber, pageSize) {
                 var ct = tabsDiv.tabs('getSelected').panel('options').title;    //这一句是关键啊
-                console.info("翻页：" + ct);
+                console.info("翻页：" + ct + "页码：" + pageNumber);
                 listFunction(ct, pageNumber, pageSize)
             }
         })
-        console.info("当前页：" + currentPage + ",   总页数：" + total);
+        console.info("当前页：" + currentPage + ",   总数：" + total);
         return {total: total, currentPage: currentPage};
     }
 
