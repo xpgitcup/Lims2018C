@@ -9,6 +9,7 @@ class Operation4CommonDataAController {
 
     def operation4DictionaryService
     def systemUserService
+    def dataKeyService
 
     def removeFromUserGrade() {
         def dataKey = DataKey.get(session.commonDataKey)
@@ -77,6 +78,8 @@ class Operation4CommonDataAController {
     }
 
     def count() {
+        println("${params}")
+        println("listDataItem: ${params}")
         def dataKey = DataKey.get(session.commonDataKey)
         def count = DataItem.countByDataKey(dataKey)
         println("统计结果：${count} ${dataKey}")

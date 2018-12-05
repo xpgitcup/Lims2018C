@@ -17,35 +17,24 @@
     </g:else>
 <!-- end 实现可定制的布局 -->
 
-    <g:set var="entityName" value="CommonDataA"/>
+    <g:set var="entityName" value="${entityName}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${entityName}维护</title>
     <asset:javascript src="cn/edu/cup/commondata/${entityName}.js"/>
 </head>
 
 <body>
-<div id="commonTabList" class="hidden">${commonTabList}</div>
-
-<div id="commonIdList" class="hidden">${commonIdList}</div>
+<div id="tabNameList" class="hidden">${tabNameList}</div>
+<div id="idList" class="hidden">${idList}</div>
+<div id="dataKeys" class="hidden">${dataKeys}</div>
+<div id="functionName" class="hidden">${functionName}</div>
 
 <div class="nav">
     <ul>
-        <g:each in="${ids}" status="i" var="item">
+        <g:each in="${topHrefList}" status="i" var="item">
             <li>
-                <a href="#">
-                    <div>${item}</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div id="${item}">${item}</div>
-                </a>
-            </li>
-        </g:each>
-        <g:each in="${commonFunctionList}" status="i" var="item">
-            <li>
-                <a href="javascript: ${item[1]}">
-                    <div>${item[0]}</div>
+                <a href="${item.value}">
+                    <div>${item.key}</div>
                 </a>
             </li>
         </g:each>
@@ -56,7 +45,7 @@
     <div class="message" role="status">${flash.message}</div>
 </g:if>
 
-<div id="operation4CommonDataADiv" class="easyui-tabs">
+<div id="operation4CommonDataBDiv" class="easyui-tabs">
 </div>
 </body>
 </html>

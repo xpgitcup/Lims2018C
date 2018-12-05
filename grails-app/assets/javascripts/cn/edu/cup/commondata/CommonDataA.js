@@ -12,7 +12,7 @@ $(function () {
     var idList = JSON.parse($("#commonIdList").text())
     console.info(tabList)
     console.info(idList)
-    operation4CommonDataADiv = $("#operation4CommonDataADiv");
+    operation4CommonDataADiv = $("#operation4CommonDataBDiv");
 
     tabPagesManagerA("operation4CommonDataADiv", tabList, idList, loadDataItem, countDataItem);
 

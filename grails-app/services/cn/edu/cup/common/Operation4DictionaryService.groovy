@@ -3,6 +3,7 @@ package cn.edu.cup.common
 import cn.edu.cup.dictionary.DataItem
 import cn.edu.cup.dictionary.DataKey
 import cn.edu.cup.system.SystemUser
+import com.alibaba.fastjson.JSON
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -11,6 +12,21 @@ class Operation4DictionaryService {
     def commonService
     def dataKeyConfig
     def dataItemService
+
+    def loadMapFromFile(fileName) {
+        def r = [:]
+        def file = new File(fileName)
+        if (file.exists()) {
+            r = JSON.parse(file.text)
+        } else {
+            r.put("id1", "操作1")
+            r.put("id2", "操作2")
+            def printWriter = new PrintWriter(file, "utf-8")
+            printWriter.write(JSON.toJSONString(r))
+            printWriter.close()
+        }
+        return r
+    }
 
     def getRealName(SystemUser systemUser) {
         def name = ""
