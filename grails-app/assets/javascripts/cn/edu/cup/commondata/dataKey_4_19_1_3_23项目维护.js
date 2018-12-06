@@ -10,7 +10,7 @@ var functionName;
 var idList;
 
 $(function () {
-    console.info("通用的数据管理...dataKey_3学生维护...");
+    console.info("通用的数据管理...dataKey_4_19_1_3_23项目维护...");
     var tabList = JSON.parse($("#tabNameList").text());
     idList = JSON.parse($("#idList").text());
     dataKeys = JSON.parse($("#dataKeys").text());
@@ -44,7 +44,6 @@ function countDataItem(title) {
 }
 
 function loadDataItem(title, page, pageSize) {
-    console.info("读入数据..." + title);
     var currentKey = getCurrentKey();
     console.info("读入数据..." + title + "  dataKey=" + currentKey);
     var aux = ""

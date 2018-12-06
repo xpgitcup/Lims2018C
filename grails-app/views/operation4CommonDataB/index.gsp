@@ -31,12 +31,24 @@
 
 <div class="nav">
     <ul>
-        <g:each in="${topHrefList}" status="i" var="item">
-            <li>
-                <a href="${item.value}">
-                    <div>${item.key}</div>
-                </a>
-            </li>
+        <li>
+            <h1>当前功能：${session.function}</h1>
+        </li>
+        <g:each in="${topHrefList}" status="i" var="itemA">
+            <g:each in="${itemA}" status="j" var="item">
+                <g:if test="${item.value=='#'}">
+                    <li>
+                        <a>
+                            <div>当前${item.key}</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <div id="${item.key}">${item.key}</div>
+                        </a>
+                    </li>
+                </g:if>
+            </g:each>
         </g:each>
     </ul>
 </div>

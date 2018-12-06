@@ -99,8 +99,8 @@ class Operation4CommonDataBController {
         }
         println("查询结果：${dataKey} -- ${count}:  ${dataItemList}")
         //--------------------------------------------------------------------------------------------------------------
-        def view = "/userViewTemplates/${dataKey.id}/${params.functionName}.gsp"
-
+        //def view = "/userViewTemplates/${dataKey.id}/${params.functionName}.gsp"
+        def view = session.viewName
         println("采用${view}")
         if (request.xhr) {
             render(template: view, model: [dataItemList: dataItemList])
@@ -167,15 +167,19 @@ class Operation4CommonDataBController {
         configName = commonService.webRootPath + "commonData/" + entityName + ".config"
         topHrefList = operation4DictionaryService.loadMapFromFile(configName)
         topHrefList.each { e ->
-            if (e.value == "#") {
-                idList.add(e.key)
+            e.each { ee->
+                if (ee.value=='#') {
+                    idList.add(ee.key)
+                }
             }
         }
         //记录在session中
         session.dataKey = params.dataKey
         session.function = params.function
+        session.viewName = "/userViewTemplates/" + entityName + ".gsp"
+
         // 输出，返回
-        //println("${this.class.name} ${entityName} ${configName} ${tabNameList} ${topHrefList}")
+        println("${this.class.name} ${entityName} ${configName} ${tabNameList} ${topHrefList}")
         model:
         [
                 entityName  : entityName,

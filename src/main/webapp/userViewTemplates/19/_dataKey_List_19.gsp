@@ -31,6 +31,7 @@
                   <td>${item?.subDataItems[2].dataValue}</td>
                 </tr>
                 <tr>
+                  <td>${item?.subDataItems[3].dataKey.id}</td>
                   <td>${item?.subDataItems[3].id}</td>
                   <td>${item?.subDataItems[3].dataKey.dataTag}</td>
                   <td>${item?.subDataItems[3].dataValue}</td>

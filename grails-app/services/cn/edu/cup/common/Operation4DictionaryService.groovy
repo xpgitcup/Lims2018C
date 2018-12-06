@@ -14,13 +14,14 @@ class Operation4DictionaryService {
     def dataItemService
 
     def loadMapFromFile(fileName) {
-        def r = [:]
+        def r = []
         def file = new File(fileName)
         if (file.exists()) {
+            r.clear()
             r = JSON.parse(file.text)
         } else {
-            r.put("id1", "操作1")
-            r.put("id2", "操作2")
+            r.add(["id1":"操作1"])
+            r.add(["id2":"操作2"])
             def printWriter = new PrintWriter(file, "utf-8")
             printWriter.write(JSON.toJSONString(r))
             printWriter.close()
