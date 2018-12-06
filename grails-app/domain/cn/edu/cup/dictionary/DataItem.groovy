@@ -30,6 +30,13 @@ class DataItem {
     }
 
     //------------------------------------------------------------------------------------------------------------------
+    def beforeInsert() {
+        if (subDataItems) {
+            dataValue = subDataItems[0].dataValue
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
     def importFromDataTable(List dataTable) {
         subDataItems = []
         if (dataKey.subDataKeys.size() == dataTable.size()) {

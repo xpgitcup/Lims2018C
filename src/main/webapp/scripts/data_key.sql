@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-12-02 10:34:33
+Date: 2018-12-06 15:53:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,9 +59,9 @@ INSERT INTO `data_key` VALUES ('16', '0', '3', 'dataKeyNormal', '1', '无量纲'
 INSERT INTO `data_key` VALUES ('17', '0', '3', 'dataKeyNormal', '1', '无量纲', ',', null, '专业', '1', '0');
 INSERT INTO `data_key` VALUES ('18', '0', '3', 'dataKeyNormal', '1', '无量纲', ',', null, '导师', '1', '0');
 INSERT INTO `data_key` VALUES ('19', '0', null, 'dataKeyNormal', '1', '无量纲', ',', null, '项目管理', '1', '0');
-INSERT INTO `data_key` VALUES ('20', '0', '19', 'dataKeyRef', '1', '无量纲', ',', null, '项目', '1', '0');
-INSERT INTO `data_key` VALUES ('21', '0', '19', 'dataKeyRef', '1', '无量纲', ',', null, '参与学生', '1', '0');
-INSERT INTO `data_key` VALUES ('22', '0', '19', 'dataKeyRef', '1', '无量纲', ',', null, '参与教师', '1', '0');
+INSERT INTO `data_key` VALUES ('20', '1', '19', 'dataKeyRef', '1', '无量纲', ',', '4', '项目', '1', '0');
+INSERT INTO `data_key` VALUES ('21', '1', '19', 'dataKeyRef', '1', '无量纲', ',', '3', '参与学生', '1', '0');
+INSERT INTO `data_key` VALUES ('22', '1', '19', 'dataKeyRef', '1', '无量纲', ',', '1', '参与教师', '1', '0');
 INSERT INTO `data_key` VALUES ('23', '0', '19', 'dataKeyRef', '1', '无量纲', ',', null, '进展情况', '1', '0');
 INSERT INTO `data_key` VALUES ('24', '0', '23', 'dataKeyDateTime', '1', '无量纲', ',', null, '时间', '1', '0');
 INSERT INTO `data_key` VALUES ('25', '0', '23', 'dataKeyNormal', '1', '无量纲', ',', null, '本次进展', '1', '0');

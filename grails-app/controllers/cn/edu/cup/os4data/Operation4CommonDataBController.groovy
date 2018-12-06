@@ -101,6 +101,9 @@ class Operation4CommonDataBController {
         //--------------------------------------------------------------------------------------------------------------
         //def view = "/userViewTemplates/${dataKey.id}/${params.functionName}.gsp"
         def view = session.viewName
+        if (params.viewName) {
+            view = params.viewName
+        }
         println("采用${view}")
         if (request.xhr) {
             render(template: view, model: [dataItemList: dataItemList])

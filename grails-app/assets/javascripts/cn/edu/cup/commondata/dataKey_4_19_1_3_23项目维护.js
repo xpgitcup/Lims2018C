@@ -46,20 +46,57 @@ function countDataItem(title) {
 function loadDataItem(title, page, pageSize) {
     var currentKey = getCurrentKey();
     console.info("读入数据..." + title + "  dataKey=" + currentKey);
-    var aux = ""
-    var params = getParams(page, pageSize) + "&title=" + title + "&dataKey=" + currentKey + "&functionName=" + functionName;    //getParams必须是放在最最前面！！
+    switch (title) {
+        case "项目信息":
+            var params = getParams(page, pageSize) + "&title=" + title + "&dataKey=" + currentKey + "&functionName=" + functionName;    //getParams必须是放在最最前面！！
+            break;
+        case "项目管理":
+            var params = getParams(page, pageSize) +
+                "&title=" + title +
+                "&dataKey=" + currentKey +
+                "&viewName=" + "/userViewTemplates/dataKey_4_19_1_3_23项目维护_19.gsp" +
+                "&functionName=" + functionName;    //getParams必须是放在最最前面！！
+            break;
+        case "教师信息":
+            break;
+        case "学生信息":
+            break;
+        case "进展情况":
+            break;
+    }
     console.info(params)
     ajaxRun("operation4CommonDataB/list" + params, 0, "list" + title + "Div");
     $.cookie("currentPage" + title, page);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+/*
+* 项目管理
+* */
+function managerProject(id) {
+    operation4CommonDataBDiv.tabs("select", "项目管理")
+    //ajaxRun("operation4CommonDataB")
+}
 
+/*
+*  选择与跳转
+* */
 function selectCurrentKey(id) {
     var index = getCurrentIndex()
     //$.cookie("currentKey" + , id)
     console.info("点击：" + idList[index]);
     $("#" + idList[index]).html(id)
+    switch (index) {
+        case 0:
+            operation4CommonDataBDiv.tabs("select", "项目管理")
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+    }
 }
 
 function import2systemUserGrade(grade) {

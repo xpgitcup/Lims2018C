@@ -77,7 +77,7 @@ class Operation4DictionaryService {
 
     def uploadFile4Import(DataKey dataKey) {
         def webRootPath = commonService.webRootPath
-        return webRootPath + "/uploads4Import/${dataItem.dataKey.id}"
+        return webRootPath + "/uploads4Import/${dataKey.id}"
     }
 
     def uploadFilePath4DataItem(DataItem dataItem) {
